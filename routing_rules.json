@@ -1,6 +1,6 @@
 [
     {
-        "name": "rule1",
+        "name": "airflow scheduled",
         "description": "airflow scheduled",
         "priority": 2,
         "condition": "context.getSubmittedApp() == \"airflow\" && context.getQueryType() == \"scheduled\"",
@@ -18,7 +18,7 @@
         ]
     },
     {
-        "name": "rule2",
+        "name": "mode",
         "description": "mode",
         "priority": 1,
         "condition": "context.getSubmittedApp() == \"mode\"",
