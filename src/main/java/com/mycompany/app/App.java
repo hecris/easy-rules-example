@@ -10,6 +10,10 @@ public class App
         router.loadRulesFromFile("routing_rules.json");
 
         // query coming from airflow with type scheduled
+        QueryContext airflow_query = new QueryContext(
+                "airflow", "", "", "");
+
+        // query coming from airflow with type scheduled
         QueryContext airflow_scheduled_query = new QueryContext(
                 "airflow", "", "scheduled", "");
 
@@ -17,7 +21,8 @@ public class App
         QueryContext mode_query = new QueryContext(
                 "mode", "", "", "");
 
-        System.out.println(router.getRoutingGroup(airflow_scheduled_query)); // etl
+        System.out.println(router.getRoutingGroup(airflow_query)); // etl
+        System.out.println(router.getRoutingGroup(airflow_scheduled_query)); // etl-scheduled
         System.out.println(router.getRoutingGroup(mode_query)); // scheduled
     }
 }

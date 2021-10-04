@@ -2,8 +2,17 @@
     {
         "name": "rule1",
         "description": "airflow scheduled",
-        "priority": 1,
+        "priority": 2,
         "condition": "context.getSubmittedApp() == \"airflow\" && context.getQueryType() == \"scheduled\"",
+        "actions": [
+            "context.setRoutingGroup(\"etl-scheduled\")"
+        ]
+    },
+    {
+        "name": "airflow",
+        "description": "general airflow",
+        "priority": 1,
+        "condition": "context.getSubmittedApp() == \"airflow\"",
         "actions": [
             "context.setRoutingGroup(\"etl\")"
         ]
