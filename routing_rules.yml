@@ -1,0 +1,6 @@
+---
+name: "weather rule"
+description: "if it rains then take an umbrella"
+condition: "context.getSubmittedApp() == \"airflow\" && context.getQueryType() == \"scheduled\""
+actions:
+  - "context.setRoutingGroup(\"etl\")"

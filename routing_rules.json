@@ -1,0 +1,20 @@
+[
+    {
+        "name": "rule1",
+        "description": "airflow scheduled",
+        "priority": 1,
+        "condition": "context.getSubmittedApp() == \"airflow\" && context.getQueryType() == \"scheduled\"",
+        "actions": [
+            "context.setRoutingGroup(\"etl\")"
+        ]
+    },
+    {
+        "name": "rule2",
+        "description": "mode",
+        "priority": 1,
+        "condition": "context.getSubmittedApp() == \"mode\"",
+        "actions": [
+            "context.setRoutingGroup(\"scheduled\")"
+        ]
+    }
+]
