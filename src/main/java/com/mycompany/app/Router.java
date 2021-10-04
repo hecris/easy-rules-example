@@ -24,11 +24,10 @@ class Router {
         this.rulesEngine =  new DefaultRulesEngine();
     }
 
-    public void addRuleFromFile(String fileName) {
+    public void loadRulesFromFile(String fileName) {
         try {
             MVELRuleFactory ruleFactory = new MVELRuleFactory(new JsonRuleDefinitionReader());
             this.rules = ruleFactory.createRules(new FileReader(fileName));
-            // this.rules.register(ruleFactory.createRule(new FileReader(fileName)));
         }
         catch(Exception e) {
             System.out.println(e.getStackTrace());

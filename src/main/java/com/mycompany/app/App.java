@@ -2,22 +2,22 @@ package com.mycompany.app;
 
 import com.mycompany.app.Router;
 
-
 public class App 
 {
     public static void main( String[] args )
     {
         Router router = new Router();
-        router.addRuleFromFile("routing_rules.json");
+        router.loadRulesFromFile("routing_rules.json");
 
-
-        QueryContext context = new QueryContext(
+        // query coming from airflow with type scheduled
+        QueryContext airflow_scheduled_query = new QueryContext(
                 "airflow", "", "scheduled", "");
 
-        QueryContext context2 = new QueryContext(
+        // query from mode
+        QueryContext mode_query = new QueryContext(
                 "mode", "", "", "");
 
-        System.out.println(router.getRoutingGroup(context));
-        System.out.println(router.getRoutingGroup(context2));
+        System.out.println(router.getRoutingGroup(airflow_scheduled_query)); // etl
+        System.out.println(router.getRoutingGroup(mode_query)); // scheduled
     }
 }
