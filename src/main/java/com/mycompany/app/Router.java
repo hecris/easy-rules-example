@@ -26,7 +26,7 @@ class Router {
 
     public void loadRulesFromFile(String fileName) {
         try {
-            MVELRuleFactory ruleFactory = new MVELRuleFactory(new JsonRuleDefinitionReader());
+            MVELRuleFactory ruleFactory = new MVELRuleFactory(new YamlRuleDefinitionReader());
             this.rules = ruleFactory.createRules(new FileReader(fileName));
         }
         catch(Exception e) {

@@ -1,4 +1,5 @@
-routing_rules.yml
+*.tmp
+# routing_rules.yml
 
 # Compiled class file
 *.class

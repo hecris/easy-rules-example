@@ -1,0 +1,41 @@
+---
+name: "airflow"
+description: "default routing group for airflow queries is etl"
+priority: 1
+condition: "context.getSubmittedApp() == \"airflow\""
+actions:
+  - "context.setRoutingGroup(\"etl\")"
+---
+name: "airflow coco"
+description: "airflow coco query goesto etl-critical"
+priority: 2
+condition: "context.getSubmittedApp() == \"airflow\" && context.getLabel() == \"coco\""
+actions:
+  - "context.setRoutingGroup(\"etl-critical\")"
+---
+name: "verity blocking"
+description: "verity blocking query goes to etl-critical"
+priority: 1
+condition: "context.getSubmittedApp() == \"verity\" && context.getSubmittedSubApp() == \"blocking\""
+actions:
+  - "context.setRoutingGroup(\"etl-critical\")"
+---
+name: "verity non-blocking"
+description: "verity non-blocking query goes to etl-scheduled"
+priority: 1
+condition: "context.getSubmittedApp() == \"verity\" && context.getSubmittedSubApp() == \"non_blocking\""
+actions:
+  - "context.setRoutingGroup(\"etl-scheduled\")"
+---
+name: "mode"
+condition: "context.getSubmittedApp() == \"mode\""
+priority: 1
+actions:
+  - "context.setRoutingGroup(\"scheduled\")"
+---
+name: "default"
+description: "queries default to adhoc"
+condition: "true"
+priority: 0
+actions:
+  - "context.setRoutingGroup(\"adhoc\")"

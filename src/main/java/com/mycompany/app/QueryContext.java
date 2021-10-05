@@ -16,7 +16,6 @@ public class QueryContext {
         this.submittedSubApp = submittedSubApp;
         this.queryType = queryType;
         this.label = label;
-        this.routingGroup = "adhoc";
             }
 
     public String getSubmittedApp() {
